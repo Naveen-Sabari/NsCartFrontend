@@ -99,6 +99,10 @@
     }
   },
   "cli": {
+<<<<<<< HEAD
     "analytics": "ed98234e-cd80-4497-817b-7bf20fd1a2d8"
+=======
+    "analytics": "8efff42e-c8b6-4118-a6cf-ae2c75bdd25b"
+>>>>>>> recovery-branch
   }
 }
