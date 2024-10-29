@@ -1,0 +1,13 @@
+
+
+.host {
+    width: 100%; /* Full width for responsiveness */
+    height: 1000px; 
+    background-image: url('/assets/images/products/6.jpg'); /* Background image */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    z-index: 0; /* Set lower z-index */
+}
+
+
