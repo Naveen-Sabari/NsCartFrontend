@@ -1,13 +1,46 @@
+/* home-main.component.css */
 
-
-.host {
-    width: 100%; /* Full width for responsiveness */
-    height: 1000px; 
-    background-image: url('/assets/images/products/6.jpg'); /* Background image */
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    z-index: 0; /* Set lower z-index */
+.container-fluid {
+    padding: 20px;
 }
 
+.card {
+    height: 100%; /* Ensure cards are of equal height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between content */
+}
 
+.card img {
+    max-height: 150px; /* Limit image height */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.centered-content {
+    text-align: center; /* Center product names */
+    margin-top: 10px; /* Add some spacing */
+}
+
+.row {
+    margin-bottom: 20px; /* Space between rows of products */
+}
+
+.carousel {
+    margin-top: 20px; /* Space above the carousel */
+}
+
+.carousel img {
+    height: 200px; /* Set a fixed height for carousel images */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.col-md-3 {
+    display: flex; /* Allow flex properties to take effect */
+    justify-content: center; /* Center items horizontally */
+}
+
+.col-6 {
+    display: flex; /* Ensure products are displayed in a single row within the card */
+    flex-direction: column; /* Align product content vertically */
+    align-items: center; /* Center items horizontally */
+}

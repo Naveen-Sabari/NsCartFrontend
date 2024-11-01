@@ -4,15 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { CartService } from '../cart.service';
-import { ToastrService } from 'ngx-toastr';
-
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { CartItem } from '../cart.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ToastrModule],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
@@ -29,10 +28,24 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
-      const id: string = data['id'];
-      this.apiservice.getSingleProduct(id).subscribe((data: any) => {
-        this.product = data.product;
-      });
+      const id: string = data['id']; // Use 'id' parameter
+      
+      console.log("Received product ID:", id); // Log the received ID
+      
+      if (id) {
+        this.apiservice.getSingleProduct(id).subscribe(
+          (response: any) => {
+            console.log("API response:", response); // Log the response
+            this.product = response.product;
+          },
+          (error) => {
+            this.toastr.error("Product not found");
+            console.error(error);
+          }
+        );
+      } else {
+        this.toastr.error("Invalid product ID");
+      }
     });
   }
 
@@ -47,7 +60,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addCart() {
-   
     const newCartItem: CartItem = {
       _id: this.product._id,
       name: this.product.name,
@@ -61,8 +73,7 @@ export class ProductDetailComponent implements OnInit {
       qty: this.qty 
     };
 
-    
     this.cartService.additems(newCartItem);
-    this.toastr.success(`${this.product.name} has been added to cart`); // Use template literal for the name
+    this.toastr.success(`${this.product.name} has been added to cart`);
   }
 }

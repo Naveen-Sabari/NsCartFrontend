@@ -1,44 +1,36 @@
 <div class="container-fluid">
-    <div class="host"></div>
-
-    <h1 id="products_heading">Latest Products</h1>
-
-    <section >
+    <!-- Product Cards Section -->
+    <section>
         <div class="row">
-            @if('products.length > 0') {
-                <div *ngFor="let product of products" class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div *ngIf="products.length > 0; else noProducts" id="type1">
+                <!-- Loop through products in groups of 32 for 4 cards -->
+                <div *ngFor="let card of getProductChunks(products.slice(0, 32), 8); let i = index" class="col-md-3">
                     <div class="card p-3 rounded">
-                        <!-- image -->
-                        <img class="card-img-top mx-auto" src="{{product.images[0].image}}" />
-                  <h4 class="centered-content">{{product.name}}</h4>
-                </div></div>
-            }
-            @else {
+                        <div class="row">
+                            <div *ngFor="let product of card" class="col-6"> <!-- 2 products per row in the card -->
+                                <img [routerLink]="['/products', product._id]" class="card-img-top mx-auto" [src]="product.images[0]?.image" />
+                                <a [routerLink]="['/products', product._id]" class="centered-content" id="coll">{{ product.name }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noProducts>
                 <h3>No Products Available</h3>
-            }
+            </ng-template>
         </div>
     </section>
 
-
-    <!-- <mat-card appearance="outlined">
-        <mat-card-header>
-          <mat-card-title> Australian Shepherd</mat-card-title>
-          <mat-card-subtitle>Herding group</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-          <button mat-button>Learn More</button>
-        </mat-card-actions>
-      </mat-card>
-      <br>
-      <mat-card appearance="outlined">
-        <mat-card-header>
-          <mat-card-title>Poodle</mat-card-title>
-          <mat-card-subtitle>Non-sporting group</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions align="end">
-          <button mat-button>Learn More</button>
-        </mat-card-actions>
-      </mat-card> -->
-
-   
+    <!-- Carousel Section -->
+    <section>
+        <carousel>
+            <slide *ngFor="let carousel of getCarouselProducts()">
+                <div class="row">
+                    <div *ngFor="let product of carousel" class="col-md-2">
+                        <img [src]="product.images[0]?.image" class="d-block w-100" alt="carousel slide">
+                    </div>
+                </div>
+            </slide>
+        </carousel>
+    </section>
 </div>
