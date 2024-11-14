@@ -8,10 +8,10 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  private apiUrl = 'https://nscartbackend-5.onrender.com/api/v1';
+  private apiUrl = 'https://nscartbackend-1.onrender.com/api/v1';
   
   signup(user: { email: string, password: string, username: string }): Observable<any> {
-    return this.http.post<any>('https://nscartbackend-5.onrender.com/api/v1/signup', user);
+    return this.http.post<any>('https://nscartbackend-1.onrender.com/api/v1/signup', user);
   }
   
 

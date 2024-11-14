@@ -37,8 +37,8 @@ app.post("/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: line_items,
       mode: 'payment',
-      success_url: "https://nscartbackend-5.onrender.com/success.html",
-      cancel_url: "https://nscartbackend-5.onrender.com/cancel.html",
+      success_url: "https://nscartbackend-1.onrender.com/success.html",
+      cancel_url: "https://nscartbackend-1.onrender.com/cancel.html",
     });
     
     res.status(200).json({ id: session.id });
