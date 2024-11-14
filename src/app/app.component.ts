@@ -2,25 +2,26 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { ApiService } from './api.service';
 import { CartService } from './cart.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { LoginComponent } from './login/login.component';
+import { provideCloudinaryLoader } from '@angular/common';
+import {CloudinaryModule} from '@cloudinary/ng';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule,RouterModule], // Remove HttpClientModule and HttpClient
+  imports: [RouterOutlet, FormsModule, ReactiveFormsModule, RouterModule,CloudinaryModule], 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
   searchText: string = '';
   cartCount = 0;
- 
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private apiService: ApiService,
-     private cartservice: CartService) {}
+  constructor(private apiService: ApiService, private cartservice: CartService) {}
 
   ngOnInit(): void {
     this.cartservice.CurrentItem.pipe(takeUntil(this.unsubscribe$)).subscribe((data: any) => {

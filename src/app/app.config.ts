@@ -4,7 +4,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {  provideHttpClient } from '@angular/common/http'; // Importing HttpClientModule
-// import { ToastrModule } from 'ngx-toastr';
+
 
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimationsAsync(),
  provideHttpClient(),
- provideAnimations(),  // toastr
-    provideToastr(),  //toastr
+ provideAnimations(), 
+    provideToastr(),  
   ]
 };

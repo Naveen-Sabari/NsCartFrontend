@@ -5,12 +5,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   
 
 
-
-/* toaster */
-
-/* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
-
-/* position */
 .toast-center-center {
     top: 50%;
     left: 50%;
@@ -86,9 +80,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     cursor: pointer;
     opacity: 0.4;
   }
-  /*Additional properties for button version
-   iOS requires the button element instead of an anchor tag.
-   If you want the anchor version, it requires `href="#"`.*/
+  
   button.toast-close-button {
     padding: 0;
     cursor: pointer;
@@ -173,7 +165,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #000000;
     opacity: 0.4;
   }
-  /* Responsive Design */
+
   @media all and (max-width: 240px) {
     .toast-container .ngx-toastr.div {
       padding: 8px 8px 8px 50px;

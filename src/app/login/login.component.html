@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="left-section"></div>
+  <div class="right-section">
+    <div class="login-container">
+      <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <h2 class="login-title"><i class="fas fa-user-circle"></i> Login</h2>
+
+        <div class="form-control">
+          <i class="fas fa-user icon"></i>
+          <input
+            formControlName="email"
+            type="email"
+            placeholder="Email"
+            required
+          />
+         
+          <small *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">
+            Email is required.
+          </small>
+          <small *ngIf="loginForm.controls['email'].hasError('email') && loginForm.controls['email'].touched">
+            Invalid email format.
+          </small>
+        </div>
+
+        <div class="form-control">
+          <i class="fas fa-lock icon"></i>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <small *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+            Password is required.
+          </small>
+        </div>
+
+ 
+        <button type="submit" id="button">
+          Login
+        </button>
+        
+        <div class="social-login">
+          <p class="user">New user?</p>
+          <button routerLink="/signup" class="signup-button mt-5 mr-5">
+            Signup
+          </button>
+        </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

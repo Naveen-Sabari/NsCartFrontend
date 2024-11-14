@@ -45,5 +45,6 @@ export class CartService {
 
   removeItem(itemId: string): void {
     this.cartItems = this.cartItems.filter(item => item._id !== itemId);
-    this.itemssource.next(this.cartItems); }
+    this.itemssource.next(this.cartItems);
+  }
 }

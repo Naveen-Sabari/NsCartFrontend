@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../api.service';
 import { CartService } from '../cart.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -11,7 +11,7 @@ import { CartItem } from '../cart.service';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, ToastrModule],
+  imports: [CommonModule, FormsModule, ToastrModule,RouterModule],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
@@ -28,14 +28,14 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
-      const id: string = data['id']; // Use 'id' parameter
+      const id: string = data['id'];
       
-      console.log("Received product ID:", id); // Log the received ID
+      console.log("Received product ID:", id); 
       
       if (id) {
         this.apiservice.getSingleProduct(id).subscribe(
           (response: any) => {
-            console.log("API response:", response); // Log the response
+            console.log("API response:", response); 
             this.product = response.product;
           },
           (error) => {

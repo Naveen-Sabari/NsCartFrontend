@@ -1,40 +1,100 @@
-<div class="container container-fluid">
-    <div *ngIf="product; else noProduct">
-        <div class="row f-flex justify-content-around">
-            <div class="col-12 col-lg-5 img-fluid" id="product_image">
-                <img [src]="product.images[0]?.image" alt="Product Image" height="500" width="500">
+<div class="container container-fluid" id="host">
+    <div *ngIf="product" >
+      <div class="row justify-content-around">
+
+        
+        <!-- Image Section -->
+        <div class="col-12 col-lg-5 img-fluid" *ngIf="product.images && product.images.length > 0">
+          <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="c">
+              <div *ngFor="let image of product.images; let i = index" class="carousel-item" [class.active]="i === 0">
+                <img [src]="image" alt="{{ product.name }}" loading="lazy" class="d-block w-100"
+                 style="max-height: 400px; 
+                 object-fit: contain; 
+                 margin-top: 70px;
+                ">
+              </div>
             </div>
-
-            <div class="col-12 col-lg-5 mt-5">
-                <h3>{{ product.name }}</h3>
-                <p id="product_id">Product id: {{ product._id }}</p>
-                <hr>
-
-                <div class="rating-outer">
-                    <div class="rating-inner" [ngStyle]="{'width': (product.ratings / 5) * 100 + '%'}"></div>
-                </div>
-                <hr>
-
-                <p id="product_price">${{ product.price }}</p>
-                <div class="stockCounter d-inline">
-                    <span class="btn btn-danger minus" (click)="decreaseQty()">-</span>
-                    <input type="number" class="form-control count d-inline" [(ngModel)]="qty" readOnly />
-                    <span class="btn btn-primary plus" (click)="increaseQty()">+</span>
-                </div>
-                <button type="button" id="cart_btn" class="btn btn-primary d-inline ml-4" (click)="addCart()">Add to Cart</button>
-                <hr>
-
-                <p>Status: <span id="stock_status" [innerText]="product.stock > 0 ? 'In Stock' : 'Out of Stock'" [ngStyle]="{'color': product.stock > 0 ? 'green' : 'red'}">In Stock</span></p>
-                <hr>
-
-                <h4 class="mt-2">Description:</h4>
-                <p>{{ product.description }}</p>
-                <hr>
-                <p id="product_seller mb-3">Sold by: <strong>{{ product.seller }}</strong></p>
-            </div>
+           
+          </div>
         </div>
+  
+        <!-- Product Details Section -->
+        <div class="col-12 col-lg-5 mt-5">
+          <h3>{{ product.name }}</h3>
+          <p id="product_id">Product ID: {{ product._id }}</p>
+          <hr>
+  
+          <div class="rating-outer">
+            <div class="rating-inner" [ngStyle]="{'width': (product.ratings / 5) * 100 + '%'}"></div>
+          </div>
+          <hr>
+          <p id="product_price">₹{{ product.price }}</p>
+  
+          <div class="stockCounter d-inline">
+            <span class="btn btn-danger minus" (click)="decreaseQty()">-</span>
+            <input type="number" class="form-control count d-inline" [(ngModel)]="qty" readOnly />
+            <span class="btn btn-primary plus" (click)="increaseQty()">+</span>
+          </div>
+  
+          <button type="button" id="cart_btn" class="btn btn-primary d-inline ml-4" (click)="addCart()">Add to Cart</button>
+          <hr>
+  
+          <p>Status: 
+            <span id="stock_status" [ngStyle]="{'color': product.stock > 0 ? 'green' : 'red'}">
+              {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+            </span>
+          </p>
+          <hr>
+  
+          <h4 class="mt-2">Description:</h4>
+          <p>{{ product.description }}</p>
+          <hr>
+          <p id="product_seller mb-3">Sold by: <strong>{{ product.seller }}</strong></p>
+        </div>
+      </div>
     </div>
-    <ng-template #noProduct>
-        <h2>No Products Found</h2>
-    </ng-template>
-</div>
+  </div>
+
+
+ 
+  
+  <footer class="responsive-footer">
+    <div class="footer-container">
+
+      <div class="footer-section about">
+        <h4 class="footer-section-title">About Us</h4>
+        <p class="footer-section-description">We are a leading ecommerce platform offering a wide variety of products. Our mission is to deliver top-quality service and products to meet your needs.</p>
+      </div>
+
+      <div class="footer-section quick-links">
+        <h4 class="footer-section-title">Quick Links</h4>
+        <ul class="footer-section-list">
+          <li><a routerLink=""  class="footer-link">Home</a></li>
+          <li><a routerLink="/cart"  class="footer-link">Cart</a></li>
+          
+        </ul>
+      </div>
+  
+      <div class="footer-section contact">
+        <h4 class="footer-section-title">Contact</h4>
+        <p class="footer-section-description">Email: <a href="mailto:itznaveen1402gmail.com" class="footer-link">itznaveen1402&#64;gmail.com</a></p>
+        <p class="footer-section-description">Phone: <a href="tel:+1234567890" class="footer-link">+123 456 7890</a></p>
+        <p class="footer-section-description">Address: 123 Main St, Coimbatore, India</p>
+      </div>
+
+      <div class="footer-section social">
+        <h4 class="footer-section-title">Follow Us</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/?lang=en" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/feed/" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 NS Cart.in. All Rights Reserved.</p>
+    </div>
+  </footer>
