@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       console.log('Submitting form with data:', { username, email, password });
       this.authService.signup({ username, email, password }).subscribe({
         next: () => {
-          this.router.navigate(['/']); 
+          this.router.navigate(['']); 
         },
         error: (err) => {
           console.error('Error during signup:', err);
