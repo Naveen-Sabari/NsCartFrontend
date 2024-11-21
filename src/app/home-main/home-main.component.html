@@ -13,7 +13,6 @@
     </carousel>
 
     <div class="container-fluid" id="con2">
-      <!-- Product Cards Section -->
       <section id="partt" class="product-cards">
 
         <div *ngIf="products.length > 0; else noProducts">
@@ -80,7 +79,6 @@
   </div>
 </section>
 
-<!-- Carousel 2: Products 44 to 55 -->
 <section  *ngIf="getCarousel1Products().length > 0" class="product-carousel">
   <div class="card p-3 rounded mb-4">
     <div class="product-flex-container" id="productFlexContainer1">
@@ -97,7 +95,6 @@
       </div>
     </div>
 
-    <!-- Previous Button -->
     <a class="carousel-control-prev" 
        href="javascript:void(0)" 
        role="button" 
@@ -107,7 +104,6 @@
       <span class="sr-only">Previous</span>
     </a>
 
-    <!-- Next Button -->
     <a class="carousel-control-next" 
        href="javascript:void(0)" 
        role="button" 
@@ -119,7 +115,6 @@
   </div>
 </section>
 
-<!-- Carousel 3: Products 56 to 67 -->
 <section *ngIf="getCarousel1Products().length > 0" class="product-carousel">
   <div class="card p-3 rounded mb-4">
     <div class="product-flex-container" id="productFlexContainer1">
@@ -136,7 +131,6 @@
       </div>
     </div>
 
-    <!-- Previous Button -->
     <a class="carousel-control-prev" 
        href="javascript:void(0)" 
        role="button" 
@@ -146,7 +140,6 @@
       <span class="sr-only">Previous</span>
     </a>
 
-    <!-- Next Button -->
     <a class="carousel-control-next" 
        href="javascript:void(0)" 
        role="button" 
@@ -170,13 +163,12 @@
 
 <footer class="responsive-footer">
   <div class="footer-container">
-    <!-- About Section -->
+ 
     <div class="footer-section about">
       <h4 class="footer-section-title">About Us</h4>
       <p class="footer-section-description">We are a leading ecommerce platform offering a wide variety of products. Our mission is to deliver top-quality service and products to meet your needs.</p>
     </div>
 
-    <!-- Quick Links -->
     <div class="footer-section quick-links">
       <h4 class="footer-section-title">Quick Links</h4>
       <ul class="footer-section-list">
@@ -186,7 +178,6 @@
       </ul>
     </div>
 
-    <!-- Contact Section -->
     <div class="footer-section contact">
       <h4 class="footer-section-title">Contact</h4>
       <p class="footer-section-description">Email: <a href="mailto:itznaveen1402gmail.com" class="footer-link">itznaveen1402&#64;gmail.com</a></p>
@@ -194,7 +185,6 @@
       <p class="footer-section-description">Address: 123 Main St, Coimbatore, India</p>
     </div>
 
-    <!-- Social Links -->
     <div class="footer-section social">
       <h4 class="footer-section-title">Follow Us</h4>
       <div class="social-links">
@@ -206,7 +196,6 @@
     </div>
   </div>
 
-  <!-- Footer Bottom -->
   <div class="footer-bottom">
     <p>&copy; 2024 NS Cart.in. All Rights Reserved.</p>
   </div>

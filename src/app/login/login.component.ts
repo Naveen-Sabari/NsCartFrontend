@@ -25,21 +25,19 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      console.log('Logging in with:', { email, password });
 
       this.authService.login({ email, password }).subscribe(
         (response) => {
-          console.log('Login successful:', response);
+
           localStorage.setItem('authToken', response.token);
           this.router.navigate(['/dashboard']); 
         },
         (err) => {
-          console.error('Login failed:', err);
-          this.errorMessage = err.error?.message || 'Login failed. Please try again.';
+          this.errorMessage = 'Invalid Credentials';  
         }
       );
     } else {
-      console.log('Form is invalid');
+      this.errorMessage = 'Invalid Credentials';  
     }
   }
 }

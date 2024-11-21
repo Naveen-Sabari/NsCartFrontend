@@ -56,18 +56,19 @@ export class CartComponent implements OnInit {
     this.updateCartDetails();
   }
 
+
   onCheckout(): void {
-    this.http.post('http://localhost:4242/checkout', {
-      items: this.cartItems.map(item => ({
-        name: item.name,
-        price: item.price,
-        quantity: item.qty,
-        image: item.images[0].image 
-      }))
-    }).pipe(
+    const items = this.cartItems.map(item => ({
+      name: item.name,
+      price: item.price,
+      quantity: item.qty,
+      image: item.images, 
+    }));
+  
+    this.http.post('https://nscartbackend-1.onrender.com/checkout', { items }).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.error('Checkout error:', error);
-        return of(null);
+       
+        return of(null);  
       })
     ).subscribe(async (res: any) => {
       if (res) {
@@ -76,4 +77,8 @@ export class CartComponent implements OnInit {
       }
     });
   }
+  
+  
+  
+  
 }

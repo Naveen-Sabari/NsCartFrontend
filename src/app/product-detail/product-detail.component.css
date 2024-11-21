@@ -99,7 +99,7 @@ a {
   margin: 10px 0;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1024px) {
   .footer-container {
     flex-direction: column;

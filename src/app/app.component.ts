@@ -28,16 +28,14 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Handle cart updates
     this.cartservice.CurrentItem.pipe(takeUntil(this.unsubscribe$)).subscribe((data: any) => {
       this.cartCount = data.length;
     });
 
-    // Example: Check if running in the browser before performing browser-specific tasks
+   
     if (isPlatformBrowser(this.platformId)) {
-      console.log('Running in the browser');
-      // Place any code here that relies on the browser, like DOM manipulation
-      // For example, setting a window property or handling browser-specific events
+  
+
     }
   }
 
@@ -46,17 +44,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  // Search functionality
   search(): void {
     this.apiService.searchProducts(this.searchText);
   }
-
-  // Clear search functionality
   clearSearch(): void {
     this.apiService.clearSearch(this.searchText);
   }
-
-  // Search when Enter key is pressed
   searchByEnterKey(): void {
     this.search();
   }

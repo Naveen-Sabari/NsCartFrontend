@@ -2,8 +2,6 @@
     <div *ngIf="product" >
       <div class="row justify-content-around">
 
-        
-        <!-- Image Section -->
         <div class="col-12 col-lg-5 img-fluid" *ngIf="product.images && product.images.length > 0">
           <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="c">
@@ -19,7 +17,6 @@
           </div>
         </div>
   
-        <!-- Product Details Section -->
         <div class="col-12 col-lg-5 mt-5">
           <h3>{{ product.name }}</h3>
           <p id="product_id">Product ID: {{ product._id }}</p>

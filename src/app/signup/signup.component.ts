@@ -30,15 +30,13 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.valid) {
       const { username, email, password } = this.signupForm.value;
 
-     
-      console.log('Submitting form with data:', { username, email, password });
       this.authService.signup({ username, email, password }).subscribe({
         next: () => {
           this.router.navigate(['']); 
         },
         error: (err) => {
-          console.error('Error during signup:', err);
-          this.errorMessage = 'Please Try Using different Username or Email';  
+
+          this.errorMessage = 'Username And Email Exist..Please Try Different  Usename';  
         }
       });
     } else {

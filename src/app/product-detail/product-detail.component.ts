@@ -29,18 +29,17 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((data) => {
       const id: string = data['id'];
-      
-      console.log("Received product ID:", id); 
+   
       
       if (id) {
         this.apiservice.getSingleProduct(id).subscribe(
           (response: any) => {
-            console.log("API response:", response); 
+           
             this.product = response.product;
           },
           (error) => {
             this.toastr.error("Product not found");
-            console.error(error);
+
           }
         );
       } else {

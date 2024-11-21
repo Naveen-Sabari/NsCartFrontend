@@ -53,13 +53,13 @@ export class ApiService {
     if (searchText === '') {
       this.productsSource.next(this.productsTmp); 
     } else {
-      console.error('Error in clearing search. Please check the conditions.');
+      
     }
   }
 
   getSingleProduct(id: string) {
     const url = `${environment.apiurl}/api/v1/products/${id}`;
-    console.log('Fetching product from:', url);
+   
     return this.http.get<Product>(url).pipe(catchError(this.handleError));
   }
   private handleError(error: HttpErrorResponse) {
@@ -71,7 +71,7 @@ export class ApiService {
       
       errorMessage = `Error Code: ${error.status},  Message: ${error.message}`;
     }
-    console.error(errorMessage);
+
     return of([]); 
   }
   
