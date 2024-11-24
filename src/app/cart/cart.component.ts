@@ -23,7 +23,7 @@ export class CartComponent implements OnInit {
   private stripePromise: Promise<Stripe | null>;
 
   constructor(private cartService: CartService, private http: HttpClient) {
-    this.stripePromise = loadStripe('pk_test_51QH4jnRp9ThHgIqtO0EQhJO4s9aAl9KQ9WwISXXqxQZa1UOYPwBEtNzV65sqEzNqPf8UXlTvLlFP1ixuadhBGHfN002zhnXCEM'); 
+    this.stripePromise = loadStripe(''); 
   }
 
   ngOnInit(): void {
